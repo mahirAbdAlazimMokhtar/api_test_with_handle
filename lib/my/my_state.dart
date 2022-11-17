@@ -1,25 +1,48 @@
-import 'package:flutter/cupertino.dart';
-import '../user.dart';
+import 'package:api_test/network_exception.dart';
 
-@immutable
-abstract class MyState {}
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class MyInitial extends MyState {}
-
-class GetAllUsers extends MyState {
-  final List<User> allUsersList;
-  GetAllUsers(this.allUsersList);
+part 'my_state.freezed.dart';
+@freezed
+class ResultState<T> with _$ResultState<T> {
+  const factory ResultState.idle() = Idle<T>;
+  const factory ResultState.loading() = Loading<T>;
+  const factory ResultState.success(T data) = Success<T>;
+  const factory ResultState.error(NetworkExceptions networkExceptions) = Error<T>;
 }
 
-class GetUserDetails extends MyState {
-  final User user;
-  GetUserDetails(this.user);
-}
-class CreateNewUser extends MyState {
-  final User user;
-  CreateNewUser(this.user);
-}
-class DeleteUser extends MyState {
-  final dynamic data;
-  DeleteUser(this.data);
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+// @immutable
+// abstract class MyState {}
+
+// class MyInitial extends MyState {}
+
+// class GetAllUsers extends MyState {
+//   final List<User> allUsersList;
+//   GetAllUsers(this.allUsersList);
+// }
+
+// class GetUserDetails extends MyState {
+//   final User user;
+//   GetUserDetails(this.user);
+// }
+// class CreateNewUser extends MyState {
+//   final User user;
+//   CreateNewUser(this.user);
+// }
+// class DeleteUser extends MyState {
+//   final dynamic data;
+//   DeleteUser(this.data);
+// }
